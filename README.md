@@ -27,7 +27,7 @@ I wanted to use a package that allows me to interact with MondialRelay without h
 # Install
 
 ```bash
-npm install mondial-relay
+npm install @frontboi/mondial-relay
 ```
 
 # Run the demo
@@ -61,7 +61,7 @@ Here is an exhaustive list of the actions you can trigger using this library:
 # How to use
 
 ```typescript
-import { getLabels } from '@frontBOI/mondial-relay'
+import { getLabels } from '@frontboi/mondial-relay'
 
 async function execute() {
   const labels = await getLabels()
