@@ -1,0 +1,8 @@
+**/__test__
+**/jest.config.js
+**/node_modules
+**/dist
+**/build
+**/public
+**/beats.ts
+**/react-email-dev

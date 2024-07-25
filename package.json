@@ -1,0 +1,34 @@
+{
+  "name": "mondial-relay",
+  "version": "1.0.0",
+  "author": "Tom Blanchet",
+  "description": "MondialRelay API web services using node",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "examples": "npx ts-node ./src/examples/index.ts",
+    "prepare": "if [[ $NODE_ENVIRONMENT != \"production\" ]]; then husky install; fi"
+  },
+  "keywords": [
+    "mondialrelay",
+    "mondial-relay"
+  ],
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "chalk": "^4.1.2",
+    "eslint": "8.25.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "soap": "^1.1.0"
+  }
+}
