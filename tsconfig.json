@@ -4,9 +4,12 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "outDir": "./dist",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "declaration": true,
+    "declarationDir": "./dist",
     "noImplicitAny": false,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
@@ -15,8 +18,7 @@
     "alwaysStrict": true,
     "resolveJsonModule": true,
     "lib": ["esnext"],
-    "allowJs": false,
-    "noEmit": true
+    "allowJs": false
   },
   "include": ["src"],
   "exclude": ["node_modules"]
