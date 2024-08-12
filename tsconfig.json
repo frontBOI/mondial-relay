@@ -21,6 +21,6 @@
     "allowJs": false,
     "jsx": "react"
   },
-  "include": ["src"],
+  "include": ["src/server/**/*", "src/client/**/*"],
   "exclude": ["node_modules"]
 }

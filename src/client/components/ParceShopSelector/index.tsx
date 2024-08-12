@@ -1,6 +1,6 @@
 import React, { HTMLInputElement, useEffect, useRef } from 'react'
 
-import { ParcelShop, ParceShopID } from '../../types/parcel-shop'
+import { ParcelShop, ParceShopID } from '../../../../types/parcel-shop'
 
 import './parcel-shop-select.css'
 
