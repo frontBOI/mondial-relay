@@ -1,10 +1,10 @@
 module.exports = {
   env: {
-    es2021: true,
     node: true,
+    es2021: true,
+    browser: true,
   },
   extends: ['eslint:recommended', 'prettier'],
-  overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -31,4 +31,13 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'no-extra-boolean-cast': 'off',
   },
+
+  overrides: [
+    {
+      files: ['*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 }

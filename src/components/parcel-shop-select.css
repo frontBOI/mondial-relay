@@ -1,0 +1,7 @@
+.Zone_Widget > div {
+  width: 100%;
+}
+
+.Target_Widget {
+  visibility: hidden;
+}

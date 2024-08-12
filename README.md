@@ -19,10 +19,10 @@
 </div>
 
 ```
-A package that allows you to interact with MondialRelay's API using Typescript.
+An unofficial package that allows you to interact with MondialRelay's API using Typescript.
 ```
 
-I wanted to use a package that allows me to interact with MondialRelay without having to setup a Prestashop or any ecommerce module.
+I wanted to use a package that allows me to interact with MondialRelay without having to setup a Prestashop or any ecommerce module. I also needed a React component to integrate the MondialRelay relay selector: this package also provides it !
 
 # Install
 
@@ -30,7 +30,7 @@ I wanted to use a package that allows me to interact with MondialRelay without h
 npm install @frontboi/mondial-relay
 ```
 
-# Run the demo
+# 🚲 Run the demo
 
 Simply run the following command to run a set of predefined example requests:
 
@@ -38,16 +38,11 @@ Simply run the following command to run a set of predefined example requests:
 npm run examples
 ```
 
-# Support
-
-You can create a PR on this project and I will review it.
-If you prefer, you can contact me on Linkedin or by email (contact@tomblanchet.fr).
-
-# Credit
-
-This project is a fork of [this original one](https://github.com/nooqta/mondial-relay-api). Thank you for your work !
-
 # Features
+
+This package exports various utilitaries to help you develop an application that communicates with Mondial Relay.
+
+### Functions
 
 Here is an exhaustive list of the actions you can trigger using this library:
 
@@ -57,6 +52,22 @@ Here is an exhaustive list of the actions you can trigger using this library:
 - `getStatMessage`: get statistic message
 - `searchZipCodes`: search relay points by zip code
 - `searchPointsRelais`: search relay points by zip code
+
+### React component
+
+This package also exports a React component ready to be integrated on a webpage so that the user can select the relay point he wishes:
+
+```tsx
+import { useState } from 'react'
+
+import { ParcelShopSelector } from '@frontboi/mondial-relay'
+
+export default function MondialRelayMapSelector() {
+  const [parcelShop, setParcelShop] = useState()
+
+  return <ParcelShopSelector onParcelShopSelected={setParcelShop} />
+}
+```
 
 # How to use
 
@@ -70,3 +81,14 @@ async function execute() {
 
 execute()
 ```
+
+---
+
+### Support
+
+You can create a PR on this project and I will review it.
+If you prefer, you can contact me on Linkedin or by email (contact@tomblanchet.fr).
+
+### Credit
+
+This project is a fork of [this original one](https://github.com/nooqta/mondial-relay-api). Thank you for your work !

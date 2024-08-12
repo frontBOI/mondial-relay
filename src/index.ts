@@ -34,3 +34,5 @@ export async function getStatMessage(args: GetStatArgs) {
 export async function getTracking(args: GetTrackingArgs) {
   return await executeApiCall(args, 'WSI2_TracingColisDetaille')
 }
+
+export { default as ParcelShopSelector } from './components/ParcelShopSelector'
