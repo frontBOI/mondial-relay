@@ -1,11 +1,11 @@
 import React, { HTMLInputElement, useEffect, useRef } from 'react'
 
-import { ParcelShop, ParceShopID } from '../../../../types/parcel-shop'
+import { ParcelShop, ParcelShopID } from '../../../types/parcel-shop'
 
-import './parcel-shop-select.css'
+import './style.css'
 
 interface Props {
-  onParcelShopSelected(data: ParcelShop & ParceShopID): void
+  onParcelShopSelected(data: ParcelShop & ParcelShopID): void
 }
 
 export default function ParcelShopSelector({ onParcelShopSelected }: Props) {

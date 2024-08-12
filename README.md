@@ -30,9 +30,9 @@ I wanted to use a package that allows me to interact with MondialRelay without h
 npm install @frontboi/mondial-relay
 ```
 
-# 🚲 Run the demo
+# 🚲 Run the server demo
 
-Simply run the following command to run a set of predefined example requests:
+To see server functions in action, simply run the following command to run a set of predefined example requests:
 
 ```bash
 npm run examples
@@ -40,7 +40,7 @@ npm run examples
 
 # Features
 
-This package exports various utilitaries to help you develop an application that communicates with Mondial Relay.
+This package exports various utilitaries to help you develop an application that communicates with Mondial Relay. The features are separated in two modules: `client` (React component) and `server` (soap concerned functions).
 
 ### Functions
 

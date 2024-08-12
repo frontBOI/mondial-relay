@@ -8,4 +8,4 @@ export interface ParcelShop {
   Adresse2: string
 }
 
-export type ParceShopID = string
+export type ParcelShopID = string

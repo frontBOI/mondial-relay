@@ -1,1 +1,1 @@
-export { default as ParcelShopSelector } from './components/ParceShopSelector'
+export { default as ParcelShopSelector } from './ParcelShopSelector'
