@@ -1,4 +1,4 @@
-export interface ParcelShop {
+export interface ParcelShopSelectedData {
   CP: string
   ID: string
   Nom: string
@@ -8,4 +8,6 @@ export interface ParcelShop {
   Adresse2: string
 }
 
-export type ParcelShopID = string
+export interface ParcelShopID {
+  ParcelShopID: string
+}

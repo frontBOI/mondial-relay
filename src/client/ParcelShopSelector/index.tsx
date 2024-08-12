@@ -1,11 +1,11 @@
 import React, { HTMLInputElement, useEffect, useRef } from 'react'
 
-import { ParcelShop, ParcelShopID } from '../../../types/parcel-shop'
+import { ParcelShopID, ParcelShopSelectedData } from '../../../types/parcel-shop'
 
 import './style.css'
 
 interface Props {
-  onParcelShopSelected(data: ParcelShop & ParcelShopID): void
+  onParcelShopSelected(data: ParcelShopSelectedData & ParcelShopID): void
 }
 
 export default function ParcelShopSelector({ onParcelShopSelected }: Props) {
@@ -53,7 +53,9 @@ export default function ParcelShopSelector({ onParcelShopSelected }: Props) {
           // Afficher les informations du point relais à la sélection sur la carte?
           DisplayMapInfo: true,
           // Fonction de callback déclenché lors de la selection d'un Point Relais
-          OnParcelShopSelected: onParcelShopSelected,
+          OnParcelShopSelected: (data: ParcelShopSelectedData) => {
+            onParcelShopSelected({ ...data, ParcelShopID: targetDisplayRef.current?.value })
+          },
           //
           // Autres paramétrages.
           //
