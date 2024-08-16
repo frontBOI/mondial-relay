@@ -7,7 +7,7 @@ import './style.css'
 interface Props {
   weight?: number
   nbResults?: number
-  brandIdAPI?: string
+  brandIdAPI: string
   defaultCountry?: string
   defaultPostcode?: string
   allowedCountries?: string
@@ -34,14 +34,6 @@ export default function ParcelShopSelector({
   }, [brandIdAPI])
 
   function load() {
-    // clean if the component reloads
-    if (jqueryScriptRef.current) {
-      jqueryScriptRef.current.parentNode.removeChild(jqueryScriptRef.current)
-    }
-    if (MRScriptRef.current) {
-      MRScriptRef.current.parentNode.removeChild(MRScriptRef.current)
-    }
-
     // chargement de JQuery, puis du script de Mondial Relay
     const jqueryScript = document.createElement('script')
     jqueryScript.src = '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
@@ -64,9 +56,9 @@ export default function ParcelShopSelector({
           //
           // Paramétrage du widget pour obtention des point relais.
           //
-          // Le code client Mondial Relay, sur 8 caractères (ajouter des espaces à droite)
+          // Le code client Mondial Relay, sur 8 caractères (si test, ajouter des espaces à droite, ex: "BDTEST  ")
           // BDTEST est utilisé pour les tests => un message d'avertissement apparaît
-          Brand: brandIdAPI || 'BDTEST  ',
+          Brand: brandIdAPI,
           // Pays utilisé pour la recherche: code ISO 2 lettres.
           Country: defaultCountry || 'FR',
           // Code postal pour lancer une recherche par défaut
@@ -116,9 +108,9 @@ export default function ParcelShopSelector({
   }
 
   return (
-    <div>
+    <>
       <div id="Zone_Widget" className="Zone_Widget" />
       <input type="text" id="Target_Widget" ref={targetDisplayRef} className="Target_Widget" />
-    </div>
+    </>
   )
 }
