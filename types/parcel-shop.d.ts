@@ -1,4 +1,4 @@
-export interface ParcelShopSelectedData {
+export interface ParcelShopSelected {
   CP: string
   ID: string
   Nom: string

@@ -1,4 +1,11 @@
-import { createLabel, getLabels, getStatMessage, getTracking, searchPointsRelais, searchZipCodes } from '../src/server'
+import {
+  createLabel,
+  getLabels,
+  getStatMessage,
+  getTracking,
+  searchPointsRelais,
+  searchZipCodes,
+} from '../../src/server'
 import labelData from './data/label'
 
 import chalk from 'chalk'
