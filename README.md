@@ -96,6 +96,19 @@ const { rawResponse, isSandbox, sendingNumber, etiquetteLink } = data
 
 To try this function, you can fill the `Login` and `Password` fields in `/examples/createShipment.ts` and then run `npm run demo:create_shipment` to see it in action.
 
+### Get delivery price HT 🚛
+
+You can get your delivery price without taxes using the following function:
+
+```typescript
+import { getDeliveryPriceHT } from '@frontboi/mondial-relay'
+
+const deliveryPrice = getDeliveryPriceHT(
+  3000, // the weight in grams
+  'FR', // the destination country
+)
+```
+
 ### API v1 👴🏼
 
 These are all the functions made available in the Mondial Relay's API v1, using SOAP.
