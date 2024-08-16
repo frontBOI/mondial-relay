@@ -56,7 +56,7 @@ export default function ParcelShopSelector({
           // Pays utilisé pour la recherche: code ISO 2 lettres.
           Country: defaultCountry || 'FR',
           // Code postal pour lancer une recherche par défaut
-          PostCode: defaultPostcode || '69000',
+          PostCode: defaultPostcode || '59000',
           // Mode de livraison (Standard [24R], XL [24L], XXL [24X], Drive [DRI])
           ColLivMod: deliveryMode || '24R',
           // Nombre de Point Relais à afficher
