@@ -52,10 +52,10 @@ export default function MondialRelayMapSelector() {
     <ParcelShopSelector
       weight={3000} // (in grams) optional, filters parcel shops by package weight
       nbResults={7} // optional (default: 7)
-      deliveryMode="LCC" // optional (default: "24R)
+      deliveryMode="24R" // optional (default: "24R)
       brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value)
       defaultCountry="FR" // optional (default: "FR")
-      defaultPostcode="69000" // optional (default: "59000")
+      defaultPostcode="59000" // optional (default: "59000")
       allowedCountries="FR,BG" // optional (default: "FR")
       onParcelShopSelected={setParcelShop} // setter function when a parcel shop is clicked
     />
