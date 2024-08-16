@@ -58,7 +58,7 @@ export default function ParcelShopSelector({
           //
           // Le code client Mondial Relay, sur 8 caractères (si test, ajouter des espaces à droite, ex: "BDTEST  ")
           // BDTEST est utilisé pour les tests => un message d'avertissement apparaît
-          Brand: brandIdAPI,
+          Brand: brandIdAPI === 'BDTEST' ? 'BDTEST  ' : brandIdAPI,
           // Pays utilisé pour la recherche: code ISO 2 lettres.
           Country: defaultCountry || 'FR',
           // Code postal pour lancer une recherche par défaut
