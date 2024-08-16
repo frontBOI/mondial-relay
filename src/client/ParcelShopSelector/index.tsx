@@ -26,12 +26,22 @@ export default function ParcelShopSelector({
   onParcelShopSelected,
 }: Props) {
   const targetDisplayRef = useRef<HTMLInputElement>(null)
+  const jqueryScriptRef = useRef<HTMLScriptElement>(null)
+  const MRScriptRef = useRef<HTMLScriptElement>(null)
 
   useEffect(() => {
     load()
   }, [brandIdAPI])
 
   function load() {
+    // clean if the component reloads
+    if (jqueryScriptRef.current) {
+      jqueryScriptRef.current.parentNode.removeChild(jqueryScriptRef.current)
+    }
+    if (MRScriptRef.current) {
+      MRScriptRef.current.parentNode.removeChild(MRScriptRef.current)
+    }
+
     // chargement de JQuery, puis du script de Mondial Relay
     const jqueryScript = document.createElement('script')
     jqueryScript.src = '//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
@@ -100,9 +110,9 @@ export default function ParcelShopSelector({
         })
       }
 
-      document.body.appendChild(mrScript)
+      jqueryScriptRef.current = document.body.appendChild(mrScript)
     }
-    document.body.appendChild(jqueryScript)
+    MRScriptRef.current = document.body.appendChild(jqueryScript)
   }
 
   return (
