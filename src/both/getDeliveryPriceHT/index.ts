@@ -37,11 +37,23 @@ export default function getDeliveryPriceHT(weightInGrams: number, destinationCou
     '30000': { FR: 29.99, BE: 32.57, LU: 32.57, NL: 32.57, ES: 32.57, PT: 32.57, DE: 36.42, IT: 37.58, AT: 41.73 },
   }
 
+  // check if the destination country code is supported
+  const supportedCountries = new Set(Object.values(priceTable).flatMap(countryPrices => Object.keys(countryPrices)))
+  if (!supportedCountries.has(destinationCountryCode)) {
+    throw new Error(
+      `The destination country code ${destinationCountryCode} is not supported. Supported country codes are: ${Array.from(
+        supportedCountries,
+      ).join(', ')}`,
+    )
+  }
+
   for (const weight in priceTable) {
     if (weightInGrams <= parseInt(weight)) {
       return priceTable[weight][destinationCountryCode] || null
     }
   }
 
-  return null
+  throw new Error(
+    `The weight ${weightInGrams} is not supported. Supported weights are: ${Object.keys(priceTable).join(', ')}`,
+  )
 }

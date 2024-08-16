@@ -33,7 +33,7 @@ npm install @frontboi/mondial-relay
 
 # ✨ Features
 
-This package exports various utilities to help you develop an application that communicates with Mondial Relay. The features are separated in two modules: `client` (React component) and `server` (SOAP concerned functions for API v1, REST for API v2).
+This package exports various utilities to help you develop an application that communicates with Mondial Relay. The features are separated in two modules: `client` (React component) and `server` (SOAP concerned functions for API v1, REST for API v2). This way, the server imports won't mess with the client code (which can lead to problems in a React application for example).
 
 ## Client
 
