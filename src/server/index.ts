@@ -1,3 +1,3 @@
 export { default as createShipment } from './createShipment'
-export { default as getDeliveryPrice } from './getDeliveryPrice'
+export { default as getDeliveryPriceHT } from './getDeliveryPriceHT'
 export * from './api_v1'
