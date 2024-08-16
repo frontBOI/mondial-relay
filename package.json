@@ -1,6 +1,6 @@
 {
   "name": "@frontboi/mondial-relay",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "author": "Tom Blanchet <contact@tomblanchet.fr> (https://tomblanchet.fr)",
   "description": "MondialRelay API web services using node",
   "main": "dist/server/index.js",
