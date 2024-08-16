@@ -31,7 +31,7 @@ export default function ParcelShopSelector({
 
   useEffect(() => {
     load()
-  }, [brandIdAPI])
+  }, [])
 
   function load() {
     // chargement de JQuery, puis du script de Mondial Relay
