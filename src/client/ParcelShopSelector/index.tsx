@@ -5,10 +5,26 @@ import { ParcelShopID, ParcelShopSelected } from '../../../types/parcel-shop'
 import './style.css'
 
 interface Props {
+  weight?: number
+  nbResults?: number
+  brandIdAPI?: string
+  defaultCountry?: string
+  defaultPostcode?: string
+  allowedCountries?: string
+  deliveryMode?: 'LCC' | 'HOM' | '24R' | '24L' | 'XOH'
   onParcelShopSelected(data: ParcelShopSelected & ParcelShopID): void
 }
 
-export default function ParcelShopSelector({ onParcelShopSelected }: Props) {
+export default function ParcelShopSelector({
+  weight,
+  nbResults,
+  brandIdAPI,
+  deliveryMode,
+  defaultCountry,
+  defaultPostcode,
+  allowedCountries,
+  onParcelShopSelected,
+}: Props) {
   const targetDisplayRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -36,15 +52,15 @@ export default function ParcelShopSelector({ onParcelShopSelected }: Props) {
           //
           // Le code client Mondial Relay, sur 8 caractères (ajouter des espaces à droite)
           // BDTEST est utilisé pour les tests => un message d'avertissement apparaît
-          Brand: 'BDTEST  ',
+          Brand: brandIdAPI || 'BDTEST  ',
           // Pays utilisé pour la recherche: code ISO 2 lettres.
-          Country: 'FR',
+          Country: defaultCountry || 'FR',
           // Code postal pour lancer une recherche par défaut
-          PostCode: '59000',
+          PostCode: defaultPostcode || '69000',
           // Mode de livraison (Standard [24R], XL [24L], XXL [24X], Drive [DRI])
-          ColLivMod: '24R',
+          ColLivMod: deliveryMode || '24R',
           // Nombre de Point Relais à afficher
-          NbResults: '7',
+          NbResults: nbResults ? '' + nbResults : '7',
           //
           // Paramétrage d'affichage du widget.
           //
@@ -60,13 +76,13 @@ export default function ParcelShopSelector({ onParcelShopSelected }: Props) {
           // Autres paramétrages.
           //
           // Filtrer les Points Relais selon le Poids (en grammes) du colis à livrer
-          // Weight: "",
+          ...(weight && { Weight: weight }),
           // Spécifier le nombre de jours entre la recherche et la dépose du colis dans notre réseau
           // SearchDelay: "3",
           // Limiter la recherche des Points Relais à une distance maximum
           // SearchFar: "",
           // Liste des pays selectionnable par l'utilisateur pour la recherche: codes ISO 2 lettres
-          AllowedCountries: 'FR',
+          AllowedCountries: allowedCountries || 'FR',
           // Force l'utilisation de Google Map si la librairie est présente?
           // EnableGmap: true,
           // Activer la recherche de la position lorsque le navigateur de l'utilisateur le supporte?

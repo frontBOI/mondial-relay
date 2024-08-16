@@ -48,7 +48,18 @@ import { ParcelShopID, ParcelShopSelected } from '@frontboi/mondial-relay/types/
 export default function MondialRelayMapSelector() {
   const [parcelShop, setParcelShop] = useState<ParcelShopSelected & ParcelShopID>()
 
-  return <ParcelShopSelector onParcelShopSelected={setParcelShop} />
+  return (
+    <ParcelShopSelector
+      weight={3000} // (in grams) optional, filters parcel shops by package weight
+      nbResults={7} // optional (default: 7)
+      deliveryMode="LCC" // optional (default: "24R)
+      brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value)
+      defaultCountry="FR" // optional (default: "FR")
+      defaultPostcode="69000" // optional (default: "59000")
+      allowedCountries="FR,BG" // optional (default: "FR")
+      onParcelShopSelected={setParcelShop} // setter function when a parcel shop is clicked
+    />
+  )
 }
 ```
 
