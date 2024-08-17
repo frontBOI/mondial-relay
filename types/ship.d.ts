@@ -53,7 +53,7 @@ export interface Shipment {
   // où le colis est livré
   DeliveryMode: {
     Mode: 'LCC' | 'HOM' | '24R' | '24L' | 'XOH'
-    location?: string
+    Location?: string
   }
 
   Parcels: {

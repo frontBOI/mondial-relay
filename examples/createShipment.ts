@@ -25,7 +25,8 @@ async function run() {
         },
 
         DeliveryMode: {
-          Mode: 'HOM',
+          Mode: '24R',
+          Location: 'FR-000484',
         },
 
         Sender: {
