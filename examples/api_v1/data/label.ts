@@ -45,4 +45,5 @@ export default {
   Assurance: '',
   Instructions: '',
   Texte: '',
+  PrivateKey: 'PrivateK',
 }

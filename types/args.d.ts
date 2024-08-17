@@ -13,6 +13,7 @@ export interface SearchZipCodesArgs {
   CP: string
   NbResult: string
   Security?: string
+  PrivateKey: string
 }
 
 export interface SearchPointRelaisArgs {
@@ -22,6 +23,7 @@ export interface SearchPointRelaisArgs {
   CP: string
   NombreResultats: string
   Security?: string
+  PrivateKey: string
 }
 
 export interface CreateLabelArgs {
@@ -72,6 +74,7 @@ export interface CreateLabelArgs {
   Instructions: string
   Texte: string
   Security?: string
+  PrivateKey: string
 }
 
 export interface GetLabelsArgs {
@@ -79,6 +82,7 @@ export interface GetLabelsArgs {
   Expeditions: string
   Langue: string
   Security?: string
+  PrivateKey: string
 }
 
 export interface GetStatArgs {
@@ -86,6 +90,7 @@ export interface GetStatArgs {
   STAT_ID: number
   Langue: string
   Security?: string
+  PrivateKey: string
 }
 
 export interface GetTrackingArgs {
@@ -93,4 +98,5 @@ export interface GetTrackingArgs {
   Expedition: string
   Langue: string
   Security?: string
+  PrivateKey: string
 }

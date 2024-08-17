@@ -4,19 +4,7 @@ import statusCodes from './statusCodes'
 import crypto from 'crypto'
 import * as soap from 'soap'
 
-const privateKey = process.env.MONDIAL_RELAY_PRIVATE_KEY || 'PrivateK'
-const apiUrl = process.env.MONDIAL_RELAY_API_URL || 'https://api.mondialrelay.com/Web_Services.asmx?WSDL'
-
-/**
- * Generates a security key to be used by the Mondial Relay APIv1.
- * @param args - arguments passed to the executeApiCall function.
- * @returns a hashed string to be used as a security key.
- * @internal
- * */
-export function securityKey(args: any) {
-  const content = args.join('') + privateKey
-  return crypto.createHash('md5').update(content).digest('hex').toUpperCase()
-}
+const apiUrl = 'https://api.mondialrelay.com/WebService.asmx?WSDL'
 
 /**
  * Validates the status code of the Mondial Relay APIv1 response.
@@ -37,7 +25,7 @@ export function validateStatusCode(code: string) {
  * */
 export async function executeApiCall(args: Args, apiMethod: string) {
   const client = await soap.createClientAsync(apiUrl, { endpoint: apiUrl })
-  args.Security = securityKey(Object.values(args))
+  args.Security = crypto.createHash('md5').update(Object.values(args).join('')).digest('hex').toUpperCase()
 
   apiMethod = apiMethod + 'Async'
   const result = (await client[apiMethod](args))[0]

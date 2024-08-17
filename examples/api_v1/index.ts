@@ -28,6 +28,7 @@ async function runExamples() {
       Ville,
       CP,
       NbResult: '15',
+      PrivateKey: 'PrivateK',
     })
     console.log('Zip codes found: ', result)
   } catch (e) {
@@ -44,6 +45,7 @@ async function runExamples() {
       Ville,
       CP,
       NombreResultats: '15',
+      PrivateKey: 'PrivateK',
     })
     console.log('Just got points relais: ', result)
   } catch (e) {
@@ -68,6 +70,7 @@ async function runExamples() {
       Enseigne,
       Expeditions: '31236944',
       Langue: 'FR',
+      PrivateKey: 'PrivateK',
     })
     console.log('Just got labels: ', result)
   } catch (e) {
@@ -82,6 +85,7 @@ async function runExamples() {
       Enseigne,
       STAT_ID: 1,
       Langue: 'FR',
+      PrivateKey: 'PrivateK',
     })
     console.log('Just got stat message: ', result)
   } catch (e) {
@@ -93,9 +97,10 @@ async function runExamples() {
   try {
     console.log(chalk.yellow('\nTracking a parcel...'))
     result = await getTracking({
-      Enseigne,
-      Expedition: '31236944',
+      Enseigne: 'BDTEST',
+      Expedition: '99134297',
       Langue: 'FR',
+      PrivateKey: 'PrivateK',
     })
     console.log('Just got tracking: ', result)
   } catch (e) {
