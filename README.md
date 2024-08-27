@@ -111,9 +111,10 @@ Here is an exhaustive list of the actions you can trigger using this library:
 For example:
 
 ```typescript
-import { getLabels } from '@frontboi/mondial-relay'
+import { getLabels, getTracking } from '@frontboi/mondial-relay'
 
 getLabels().then(labels => console.log(labels))
+getTracking().then(trackingInfos => console.log(trackingInfos.Relais_Libelle))
 ```
 
 ## Client and server

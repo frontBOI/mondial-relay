@@ -6,15 +6,23 @@ import {
   SearchPointRelaisArgs,
   SearchZipCodesArgs,
 } from '../../../types/args'
+import {
+  GetLabelsValues,
+  GetTrackingValues,
+  SearchPointRelayValues,
+  SearchZipCodesValues,
+} from './../../../types/values.d'
 import { executeApiCall } from './lib/utils'
+
+const outputXML = false
 
 /**
  * Searches for postal codes based on the search criteria.
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @returns The list of postal codes that match the search criteria.
  * */
-export async function searchZipCodes(args: SearchZipCodesArgs) {
-  const result = await executeApiCall(args, 'WSI2_RechercheCP')
+export async function searchZipCodes(args: SearchZipCodesArgs): Promise<SearchZipCodesValues> {
+  const result = await executeApiCall(args, 'WSI2_RechercheCP', outputXML)
   return result.Liste.Commune
 }
 
@@ -23,8 +31,8 @@ export async function searchZipCodes(args: SearchZipCodesArgs) {
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @returns The list of relay points that match the search criteria.
  * */
-export async function searchPointsRelais(args: SearchPointRelaisArgs) {
-  const result = await executeApiCall(args, 'WSI4_PointRelais_Recherche')
+export async function searchPointsRelais(args: SearchPointRelaisArgs): Promise<SearchPointRelayValues> {
+  const result = await executeApiCall(args, 'WSI4_PointRelais_Recherche', outputXML)
   return result.PointsRelais.PointRelais_Details
 }
 
@@ -33,8 +41,8 @@ export async function searchPointsRelais(args: SearchPointRelaisArgs) {
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @deprecated Use the API v2 function instead - see {@link [createShipment](../createShipment/index.ts)}.
  * */
-export async function createLabel(args: CreateLabelArgs) {
-  return await executeApiCall(args, 'WSI2_CreationEtiquette')
+export async function createLabel(args: CreateLabelArgs): Promise<any> {
+  return await executeApiCall(args, 'WSI2_CreationEtiquette', outputXML)
 }
 
 /**
@@ -42,8 +50,8 @@ export async function createLabel(args: CreateLabelArgs) {
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @returns The list of etiquettes that match the search criteria.
  * */
-export async function getLabels(args: GetLabelsArgs) {
-  return await executeApiCall(args, 'WSI3_GetEtiquettes')
+export async function getLabels(args: GetLabelsArgs): Promise<GetLabelsValues> {
+  return await executeApiCall(args, 'WSI3_GetEtiquettes', outputXML)
 }
 
 /**
@@ -51,8 +59,8 @@ export async function getLabels(args: GetLabelsArgs) {
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @returns The list of stat messages that match the search criteria.
  * */
-export async function getStatMessage(args: GetStatArgs) {
-  const result = await executeApiCall(args, 'WSI2_STAT_Label')
+export async function getStatMessage(args: GetStatArgs): Promise<any> {
+  const result = await executeApiCall(args, 'WSI2_STAT_Label', outputXML)
   return result
 }
 
@@ -61,6 +69,7 @@ export async function getStatMessage(args: GetStatArgs) {
  * @param args - parameters necessary for the API call. Refer to the Typescript type for more information.
  * @returns The tracking information for the package that matches the search criteria.
  * */
-export async function getTracking(args: GetTrackingArgs) {
-  return await executeApiCall(args, 'WSI2_TracingColisDetaille')
+export async function getTracking(args: GetTrackingArgs): Promise<GetTrackingValues> {
+  const result = await executeApiCall(args, 'WSI2_TracingColisDetaille', outputXML)
+  return result
 }
