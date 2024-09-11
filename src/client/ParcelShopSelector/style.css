@@ -5,3 +5,9 @@
 .Target_Widget {
   visibility: hidden;
 }
+
+@media (max-width: 425px) {
+  .MR-Widget .MRW-Results {
+    height: unset;
+  }
+}
