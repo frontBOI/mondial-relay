@@ -73,7 +73,7 @@ export const ShipContextSchema = z.object({
   CustomerId: z
     .string()
     .max(8)
-    .regex(/^[0-9A-Z]{2}[0-9A-Z]{4,6}$/),
+    .regex(/^[0-9A-Z]{2}[0-9A-Z ]{4,6}$/),
 })
 
 export const ShipOutputOptionsSchema = z
