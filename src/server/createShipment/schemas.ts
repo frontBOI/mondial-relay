@@ -7,7 +7,7 @@ export const PersonSchema = z
     City: z
       .string()
       .max(30)
-      .regex(/^[A-Za-z_\-']{2,30}$/),
+      .regex(/^[A-Za-z_\-'\s]{2,30}$/),
 
     Email: z.string().email().max(70),
 
