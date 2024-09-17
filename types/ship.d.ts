@@ -9,7 +9,7 @@ export interface Person {
   Firstname: string
   Streetname: string
   CountryCode: string
-  Title: 'Mr' | 'Mme'
+  Title?: 'Mr' | 'Mme'
 }
 
 export interface ShipContext {

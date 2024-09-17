@@ -30,9 +30,8 @@ async function run() {
         },
 
         Sender: {
-          Title: 'Mr',
-          Firstname: 'John',
-          Lastname: 'Sender',
+          Firstname: 'Tesnim',
+          Lastname: '',
           Streetname: 'Villebois Mareuil',
           HouseNo: '3',
           CountryCode: 'FR',
@@ -44,7 +43,7 @@ async function run() {
         },
 
         Recipient: {
-          Title: 'Mr',
+          Title: 'Mme',
           Firstname: 'Maria',
           Lastname: 'Receiver',
           Streetname: 'Villebois Mareuil',

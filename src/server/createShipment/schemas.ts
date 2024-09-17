@@ -36,11 +36,11 @@ export const PersonSchema = z
       .max(2)
       .regex(/^[A-Z]{2}$/),
 
-    Title: z.enum(['Mr', 'Mme']),
+    Title: z.enum(['Mr', 'Mme']).optional(),
   })
   .refine(
     data => {
-      const totalLength = data.Title.length + data.Firstname.length + data.Lastname.length
+      const totalLength = (data.Title?.length || 0) + data.Firstname.length + data.Lastname.length
       return totalLength <= 32
     },
     {
