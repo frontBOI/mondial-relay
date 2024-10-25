@@ -7,7 +7,7 @@ export const PersonSchema = z
     City: z
       .string()
       .max(30)
-      .regex(/^[A-Za-z_\-'\s]{2,30}$/),
+      .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ_\-'.,\s]{2,30}$/),
 
     Email: z.string().email().max(70),
 
@@ -29,7 +29,7 @@ export const PersonSchema = z
     Streetname: z
       .string()
       .max(40)
-      .regex(/^[0-9A-Za-z_\-'.,\s]{0,40}$/),
+      .regex(/^[0-9A-Za-zÀ-ÖØ-öø-ÿ_\-'.,\s]{0,40}$/),
 
     CountryCode: z
       .string()
@@ -87,7 +87,7 @@ const ParcelSchema = z.object({
   Content: z
     .string()
     .max(40)
-    .regex(/^[0-9A-Za-z_\- '., /]{0,40}$/),
+    .regex(/^[0-9A-Za-zÀ-ÖØ-öø-ÿ_\-'.,\s]{0,40}$/),
 
   Weight: z.object({
     Value: z.number(),
@@ -142,7 +142,7 @@ export const ShipmentSchema = z.object({
   DeliveryInstruction: z
     .string()
     .max(30)
-    .regex(/^[0-9A-Za-z_\- '., /]{0,30}$/)
+    .regex(/^[0-9A-Za-zÀ-ÖØ-öø-ÿ_\-'.,\s]{0,30}$/)
     .optional(),
 
   ShipmentValue: z

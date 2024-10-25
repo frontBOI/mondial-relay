@@ -32,7 +32,7 @@ async function run() {
         Sender: {
           Firstname: 'Tesnim',
           Lastname: '',
-          Streetname: 'Villebois Mareuil',
+          Streetname: 'Quai Frédéric Mistral',
           HouseNo: '3',
           CountryCode: 'FR',
           PostCode: '69003',
@@ -46,7 +46,7 @@ async function run() {
           Title: 'Mme',
           Firstname: 'Maria',
           Lastname: 'Receiver',
-          Streetname: 'Villebois Mareuil',
+          Streetname: 'Quai Frédéric Mistral',
           HouseNo: '2',
           CountryCode: 'FR',
           PostCode: '69003',
