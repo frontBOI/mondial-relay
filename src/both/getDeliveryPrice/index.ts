@@ -11,7 +11,7 @@ type AvailableCountry = 'FR' | 'BE' | 'LU' | 'NL' | 'ES' | 'PT' | 'DE' | 'IT' | 
  *
  * @example
  * ```typescript
- * getDeliveryPriceHT(500, 'FR') // this will return 3.99
+ * getDeliveryPrice(500, 'FR') // this will return 3.99
  * ```
  *
  * @remarks
@@ -21,8 +21,8 @@ type AvailableCountry = 'FR' | 'BE' | 'LU' | 'NL' | 'ES' | 'PT' | 'DE' | 'IT' | 
  *
  * @experimental
  * */
-export default function getDeliveryPriceHT(weightInGrams: number, destinationCountryCode: AvailableCountry) {
-  const priceTable: { [key: string]: { [key: string]: number } } = {
+export default function getDeliveryPrice(weightInGrams: number, destinationCountryCode: AvailableCountry) {
+  const priceTableHT: { [key: string]: { [key: string]: number } } = {
     '250': { FR: 3.49, BE: 3.69, LU: 3.69, NL: 4.39, ES: 5.39, PT: 5.39, DE: 5.42, IT: 6.15, AT: 7.26 },
     '500': { FR: 3.99, BE: 4.17, LU: 4.17, NL: 5.03, ES: 6.16, PT: 6.16, DE: 5.98, IT: 7.02, AT: 7.82 },
     '1000': { FR: 4.49, BE: 4.95, LU: 4.95, NL: 5.55, ES: 6.6, PT: 6.6, DE: 6.71, IT: 7.47, AT: 8.88 },
@@ -38,7 +38,7 @@ export default function getDeliveryPriceHT(weightInGrams: number, destinationCou
   }
 
   // check if the destination country code is supported
-  const supportedCountries = new Set(Object.values(priceTable).flatMap(countryPrices => Object.keys(countryPrices)))
+  const supportedCountries = new Set(Object.values(priceTableHT).flatMap(countryPrices => Object.keys(countryPrices)))
   if (!supportedCountries.has(destinationCountryCode)) {
     throw new Error(
       `The destination country code ${destinationCountryCode} is not supported. Supported country codes are: ${Array.from(
@@ -47,13 +47,20 @@ export default function getDeliveryPriceHT(weightInGrams: number, destinationCou
     )
   }
 
-  for (const weight in priceTable) {
+  let priceHT
+  for (const weight in priceTableHT) {
     if (weightInGrams <= parseInt(weight)) {
-      return priceTable[weight][destinationCountryCode] || null
+      priceHT = priceTableHT[weight][destinationCountryCode] || null
+      break
     }
   }
 
-  throw new Error(
-    `The weight ${weightInGrams} is not supported. Supported weights are: ${Object.keys(priceTable).join(', ')}`,
-  )
+  if (!priceHT) {
+    throw new Error(
+      `The weight ${weightInGrams} is not supported. Supported weights are: ${Object.keys(priceTableHT).join(', ')}`,
+    )
+  }
+
+  // ajout de la TVA
+  return priceHT * 1.2
 }

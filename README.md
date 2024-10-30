@@ -126,9 +126,9 @@ Some functions are available both for the client and the server.
 You can get your delivery price without taxes using the following function:
 
 ```typescript
-import { getDeliveryPriceHT } from '@frontboi/mondial-relay'
+import { getDeliveryPrice } from '@frontboi/mondial-relay'
 
-const deliveryPrice = getDeliveryPriceHT(
+const deliveryPrice = getDeliveryPrice(
   3000, // the weight in grams
   'FR', // the destination country
 )
