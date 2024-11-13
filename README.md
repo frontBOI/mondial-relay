@@ -33,7 +33,15 @@ npm install @frontboi/mondial-relay
 
 # ✨ Features
 
+> You must have an account at [Mondial Relay connect hub](https://connect.mondialrelay.com) to obtain the values required to successfully request Mondial Relay's WebService. You can create an account [here](https://www.mondialrelay.fr/connexion-inscription/).
+
 This package exports various utilities to help you develop an application that communicates with Mondial Relay. The features are separated in two modules: `client` (React component) and `server` (SOAP concerned functions for API v1, REST for API v2). This way, the server imports won't mess with the client code (which can lead to problems in a React application for example).
+
+This package's utilities are separated in three functional domains:
+
+- Client-side only function _(e.g. a React component)_
+- Server-side only function _(e.g. create a shipment, which requireds a secret so backend only)_
+- Functions available on both environment
 
 ## Client
 
@@ -53,7 +61,7 @@ export default function MondialRelayMapSelector() {
       weight={3000} // (in grams) optional, filters parcel shops by package weight
       nbResults={7} // optional (default: 7)
       deliveryMode="24R" // optional (default: "24R)
-      brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value)
+      brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value for production usage)
       defaultCountry="FR" // optional (default: "FR")
       defaultPostcode="59000" // optional (default: "59000")
       allowedCountries="FR,BG" // optional (default: "FR")
@@ -63,17 +71,9 @@ export default function MondialRelayMapSelector() {
 }
 ```
 
-_This component has been completely developed using Typescript._
-
 ## Server
 
-The server utilities are separated in several functional domains.
-
-❗️**IMPORTANT**: the library sends requests to the **production** Mondial Relay API endpoint. Be sure to use test credentials for your development stage !
-
-### Setup
-
-You must have an account at [Mondial Relay connect hub](https://connect.mondialrelay.com) to obtain the values required to successfully request Mondial Relay's WebService. You can create an account [here](https://www.mondialrelay.fr/connexion-inscription/).
+❗️**IMPORTANT**: because Mondial Relay does not provide a separated test environement, the library sends requests to the **production** Mondial Relay API endpoint. Be sure to use test credentials for your development stage !
 
 ### Create shipment 📤
 
@@ -94,11 +94,11 @@ const data: CreateShipmentResponse = await createShipment({
 const { rawResponse, isSandbox, sendingNumber, etiquetteLink } = data
 ```
 
-To try this function, you can fill the `Login` and `Password` fields in `/examples/createShipment.ts` and then run `npm run demo:create_shipment` to see it in action.
+To try this function, fill the `Login` and `Password` fields in `/examples/createShipment.ts` with your own keys, then run `npm run demo:create_shipment` to test for your environment.
 
 ### API v1 👴🏼
 
-These are all the functions made available in the Mondial Relay's API v1, using SOAP.
+These are all the functions made available by the Mondial Relay's API v1, using SOAP.
 Here is an exhaustive list of the actions you can trigger using this library:
 
 - `getLabels`: get labels
@@ -119,11 +119,16 @@ getTracking().then(trackingInfos => console.log(trackingInfos.Relais_Libelle))
 
 ## Client and server
 
-Some functions are available both for the client and the server.
+Functions made available both for client and server environment.
 
-### Get delivery price HT 🚛
+### Get delivery price (including VAT) 🚛
 
-You can get your delivery price without taxes using the following function:
+The `getDeliveryPrice` function allows you to calculate your delivery price, based on the destination's country and the package's weight. Please take into consideration that:
+
+1. **Prices are based on professional delivery's price schedule**. There is currently no method to calculate the delivery price for a private individual.
+2. Mondial Relay delivers from France to European countries. Therefore, **you cannot calculate delivery price from a country other than France**.
+
+Here is an example of how to get your delivery price (VAT included):
 
 ```typescript
 import { getDeliveryPrice } from '@frontboi/mondial-relay'
@@ -138,8 +143,8 @@ const deliveryPrice = getDeliveryPrice(
 
 ### Support
 
-You can create a PR on this project and I will review it.
-If you prefer, you can contact me on Linkedin or by email (contact@tomblanchet.fr).
+You can create an issue on this project and I will gladly consider it.
+If you prefer, you can contact me on my Linkedin or directly by email (contact@tomblanchet.fr).
 
 ### Credit
 

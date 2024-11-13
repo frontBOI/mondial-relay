@@ -1,8 +1,8 @@
 {
   "name": "@frontboi/mondial-relay",
-  "version": "1.2.19",
+  "version": "1.2.20",
   "author": "Tom Blanchet <contact@tomblanchet.fr> (https://tomblanchet.fr)",
-  "description": "MondialRelay API web services made simple using NodeJS and Typescript",
+  "description": "MondialRelay API web services made simple using Typescript",
   "main": "dist/server/index.js",
   "module": "dist/client/index.js",
   "types": "dist/index.d.ts",

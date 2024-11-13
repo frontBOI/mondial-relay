@@ -8,8 +8,8 @@ async function run() {
     const response = await createShipment({
       context: {
         CustomerId: 'BDTEST',
-        Password: "'2crtPDo0ZL7Q*3kLumB",
-        Login: 'BDTEST@business-api.mondialrelay.com',
+        Password: 'fill me',
+        Login: 'fill me',
       },
       shipment: {
         OrderNo: '120120',
