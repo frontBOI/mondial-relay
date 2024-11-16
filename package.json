@@ -1,6 +1,6 @@
 {
   "name": "@frontboi/mondial-relay",
-  "version": "1.2.22",
+  "version": "1.2.23",
   "author": "Tom Blanchet <contact@tomblanchet.fr> (https://tomblanchet.fr)",
   "description": "MondialRelay API web services made simple using Typescript",
   "license": "MIT",
@@ -35,8 +35,7 @@
     "mondial-relay"
   ],
   "peerDependencies": {
-    "react": "^18.3.1",
-    "soap": "^1.1.0"
+    "react": "^18.3.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.1",
@@ -58,6 +57,7 @@
   "dependencies": {
     "axios": "^1.7.3",
     "xml2js": "^0.6.2",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "soap": "^1.1.0"
   }
 }
