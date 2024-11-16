@@ -1,6 +1,6 @@
 {
   "name": "@frontboi/mondial-relay",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "author": "Tom Blanchet <contact@tomblanchet.fr> (https://tomblanchet.fr)",
   "description": "MondialRelay API web services made simple using Typescript",
   "license": "MIT",
@@ -25,11 +25,10 @@
     "demo:create_shipment": "npx ts-node ./examples/createShipment.ts",
     "demo:price": "npx ts-node ./examples/getDeliveryPrice.ts",
     "prepare": "if [[ $NODE_ENVIRONMENT != \"production\" ]]; then husky install; fi",
-    "copyStyleFile": "npx copyfiles -f ./src/client/ParcelShopSelector/style.css ./dist/esm/client/ParcelShopSelector && npx copyfiles -f ./src/client/ParcelShopSelector/style.css ./dist/cjs/client/ParcelShopSelector && echo \"Style file copied\"",
     "prepublishOnly": "npm run build",
     "build:esm": "npx tsc --p tsconfig.esm.json",
     "build:cjs": "npx tsc --p tsconfig.cjs.json",
-    "build": "npm run build:esm && npm run build:cjs && npm run copyStyleFile"
+    "build": "npm run build:esm && npm run build:cjs"
   },
   "keywords": [
     "mondialrelay",

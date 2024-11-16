@@ -2,8 +2,6 @@ import React, { HTMLInputElement, useEffect, useRef } from 'react'
 
 import { ParcelShopID, ParcelShopSelected } from '../../../types/parcel-shop'
 
-import './style.css'
-
 interface Props {
   weight?: number
   nbResults?: number
@@ -31,7 +29,21 @@ export default function ParcelShopSelector({
 
   useEffect(() => {
     load()
+    loadCSS('./style.css')
   }, [])
+
+  /**
+   * Nous sommes dans une librairie Typescript buildée sans bundler: il n'est pas possible de charger des fichiers CSS
+   * traditionnellement avec "import ./style.css", la compilation interprète le fichier CSS en JS et cela ne fonctionne pas.
+   * Il faut donc, au runtime, charger le fichier de style souhaité pour que le style soit appliqué.
+   * @param href chemin vers le fichier CSS à charger
+   */
+  function loadCSS(href: string) {
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = href
+    document.head.appendChild(link)
+  }
 
   function load() {
     // chargement de JQuery, puis du script de Mondial Relay
