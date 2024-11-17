@@ -39,8 +39,8 @@ This package exports various utilities to help you develop an application that c
 
 This package's utilities are separated in three functional domains:
 
-- Client-side only function _(e.g. a React component)_
-- Server-side only function _(e.g. create a shipment, which requireds a secret so backend only)_
+- Client-side only function _(e.g. a React component, needing browser environment)_
+- Server-side only function _(e.g. SOAP functions, which require access to fs)_
 - Functions available on both environment
 
 ## Client
@@ -50,8 +50,8 @@ This package exports a React component ready to be integrated on a webpage so th
 ```tsx
 import { useState } from 'react'
 
-import { ParcelShopSelector } from '@frontboi/mondial-relay'
-import { ParcelShopID, ParcelShopSelected } from '@frontboi/mondial-relay/types/parcel-shop'
+import { ParcelShopSelector } from '@frontboi/mondial-relay/browser'
+import { ParcelShopID, ParcelShopSelected } from '@frontboi/mondial-relay/types'
 
 export default function MondialRelayMapSelector() {
   const [parcelShop, setParcelShop] = useState<ParcelShopSelected & ParcelShopID>()
@@ -64,7 +64,7 @@ export default function MondialRelayMapSelector() {
       brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value for production usage)
       defaultCountry="FR" // optional (default: "FR")
       defaultPostcode="59000" // optional (default: "59000")
-      allowedCountries="FR,BG" // optional (default: "FR")
+      allowedCountries="FR,BE" // optional (default: "FR")
       onParcelShopSelected={setParcelShop} // setter function when a parcel shop is clicked
     />
   )
@@ -80,8 +80,8 @@ export default function MondialRelayMapSelector() {
 Here is how to create a shipment and get an etiquette back:
 
 ```typescript
-import createShipment from '@frontboi/mondial-relay'
-import { CreateShipmentResponse } from '@frontboi/mondial-relay/types/ship'
+import createShipment from '@frontboi/mondial-relay/node'
+import { CreateShipmentResponse } from '@frontboi/mondial-relay/types'
 
 const data: CreateShipmentResponse = await createShipment({
   // check out examples/createShipment for a complete example of
@@ -111,7 +111,7 @@ Here is an exhaustive list of the actions you can trigger using this library:
 For example:
 
 ```typescript
-import { getLabels, getTracking } from '@frontboi/mondial-relay'
+import { getLabels, getTracking } from '@frontboi/mondial-relay/node'
 
 getLabels().then(labels => console.log(labels))
 getTracking().then(trackingInfos => console.log(trackingInfos.Relais_Libelle))

@@ -6,19 +6,19 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "declaration": true,
-    "declarationDir": "./dist",
     "noImplicitAny": false,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
+    "baseUrl": "./src",
     "resolveJsonModule": true,
     "lib": ["esnext", "dom"],
     "allowJs": false,
+    "outDir": "./dist",
     "jsx": "react"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["!src"]
 }

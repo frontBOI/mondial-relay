@@ -1,6 +1,6 @@
 import React, { HTMLInputElement, useEffect, useRef } from 'react'
 
-import { ParcelShopID, ParcelShopSelected } from '../../../types/parcel-shop'
+import { ParcelShopID, ParcelShopSelected } from '../../types/parcel-shop'
 
 interface Props {
   weight?: number
@@ -29,20 +29,32 @@ export default function ParcelShopSelector({
 
   useEffect(() => {
     load()
-    loadCSS('./style.css')
+    loadCSS()
   }, [])
 
   /**
-   * Nous sommes dans une librairie Typescript buildée sans bundler: il n'est pas possible de charger des fichiers CSS
-   * traditionnellement avec "import ./style.css", la compilation interprète le fichier CSS en JS et cela ne fonctionne pas.
-   * Il faut donc, au runtime, charger le fichier de style souhaité pour que le style soit appliqué.
-   * @param href chemin vers le fichier CSS à charger
+   * We are in a Typescript library built without a bundler: it is not possible to load CSS files in the traditional way
+   * with ‘import ./style.css’, the compilation interprets the CSS file as JS and this does not work. So, at runtime, you
+   * have to load the desired style content for it to be applied.
    */
-  function loadCSS(href: string) {
-    const link = document.createElement('link')
-    link.rel = 'stylesheet'
-    link.href = href
-    document.head.appendChild(link)
+  function loadCSS() {
+    const style = document.createElement('style')
+    style.innerHTML = `
+    .Zone_Widget > div {
+      width: 100%;
+    }
+
+    .Target_Widget {
+      visibility: hidden;
+    }
+
+    @media (max-width: 425px) {
+      .MR-Widget .MRW-Results {
+        height: unset !important;
+      }
+    }
+  `
+    document.head.appendChild(style)
   }
 
   function load() {

@@ -1,4 +1,4 @@
-import { CreateShipmentResponse, ShipContext, Shipment, ShipOutputOptions } from '../../../types/ship'
+import { CreateShipmentResponse, ShipContext, Shipment, ShipOutputOptions } from '../../types/ship'
 import { ShipContextSchema, ShipmentSchema, ShipOutputOptionsSchema } from './schemas'
 
 import axios from 'axios'

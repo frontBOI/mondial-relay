@@ -1,19 +1,56 @@
 {
   "name": "@frontboi/mondial-relay",
-  "version": "1.2.23",
+  "version": "1.2.47",
   "author": "Tom Blanchet <contact@tomblanchet.fr> (https://tomblanchet.fr)",
   "description": "MondialRelay API web services made simple using Typescript",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    },
+    "./browser": {
+      "types": "./dist/types/browser/index.d.ts",
+      "require": "./dist/cjs/browser/index.js",
+      "import": "./dist/esm/browser/index.js",
+      "default": "./dist/esm/browser/index.js"
+    },
+    "./node": {
+      "types": "./dist/types/node/index.d.ts",
+      "require": "./dist/cjs/node/index.js",
+      "import": "./dist/esm/node/index.js",
+      "default": "./dist/esm/node/index.js"
+    },
+    "./types": {
+      "types": "./dist/types/types/index.d.ts",
+      "require": "./dist/types/types/index.d.ts",
+      "import": "./dist/types/types/index.d.ts",
+      "default": "./dist/types/types/index.d.tss"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "dist/types/index.d.ts"
+      ],
+      "node": [
+        "dist/types/node/index.d.ts"
+      ],
+      "browser": [
+        "dist/types/browser/index.d.ts"
+      ],
+      "types": [
+        "dist/types/types/index.d.ts"
+      ]
+    }
   },
   "files": [
-    "dist",
-    "types"
+    "dist"
   ],
   "homepage": "https://github.com/frontBOI/mondial-relay#readme",
   "repository": {
@@ -26,9 +63,9 @@
     "demo:price": "npx ts-node ./examples/getDeliveryPrice.ts",
     "prepare": "if [[ $NODE_ENVIRONMENT != \"production\" ]]; then husky install; fi",
     "prepublishOnly": "npm run build",
-    "build:esm": "npx tsc --p tsconfig.esm.json",
-    "build:cjs": "npx tsc --p tsconfig.cjs.json",
-    "build": "npm run build:esm && npm run build:cjs"
+    "build:clean": "rm -rf ./dist",
+    "compile": "npx tsc -b tsconfig.cjs.json tsconfig.esm.json tsconfig.types.json",
+    "build": "npx npm-run-all build:clean compile"
   },
   "keywords": [
     "mondialrelay",

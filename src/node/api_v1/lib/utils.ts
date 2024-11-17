@@ -1,4 +1,4 @@
-import { Args } from '../../../../types/args'
+import { Args } from '../../../types/args'
 import statusCodes from './statusCodes'
 
 import crypto from 'crypto'

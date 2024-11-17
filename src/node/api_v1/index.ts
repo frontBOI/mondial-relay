@@ -5,13 +5,8 @@ import {
   GetTrackingArgs,
   SearchPointRelaisArgs,
   SearchZipCodesArgs,
-} from '../../../types/args'
-import {
-  GetLabelsValues,
-  GetTrackingValues,
-  SearchPointRelayValues,
-  SearchZipCodesValues,
-} from './../../../types/values.d'
+} from '../../types/args'
+import { GetLabelsValues, GetTrackingValues, SearchPointRelayValues, SearchZipCodesValues } from '../../types/values'
 import { executeApiCall } from './lib/utils'
 
 const outputXML = false
