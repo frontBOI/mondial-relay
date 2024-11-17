@@ -50,7 +50,7 @@ This package exports a React component ready to be integrated on a webpage so th
 ```tsx
 import { useState } from 'react'
 
-import { ParcelShopSelector } from '@frontboi/mondial-relay'
+import { ParcelShopSelector } from '@frontboi/mondial-relay/browser'
 import { ParcelShopID, ParcelShopSelected } from '@frontboi/mondial-relay/types/parcel-shop'
 
 export default function MondialRelayMapSelector() {
@@ -64,12 +64,18 @@ export default function MondialRelayMapSelector() {
       brandIdAPI="BDTEST" // optional (default: "BDTEST", replace with your Brand Id API value for production usage)
       defaultCountry="FR" // optional (default: "FR")
       defaultPostcode="59000" // optional (default: "59000")
-      allowedCountries="FR,BG" // optional (default: "FR")
+      allowedCountries="FR,BE" // optional (default: "FR")
       onParcelShopSelected={setParcelShop} // setter function when a parcel shop is clicked
     />
   )
 }
 ```
+
+### Available Countries 🌍
+
+Here is a screenshot of the countries available for delivery:
+
+![Available Countries](doc/countries.png)
 
 ## Server
 
@@ -80,7 +86,7 @@ export default function MondialRelayMapSelector() {
 Here is how to create a shipment and get an etiquette back:
 
 ```typescript
-import createShipment from '@frontboi/mondial-relay'
+import createShipment from '@frontboi/mondial-relay/node'
 import { CreateShipmentResponse } from '@frontboi/mondial-relay/types/ship'
 
 const data: CreateShipmentResponse = await createShipment({
