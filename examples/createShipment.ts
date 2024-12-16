@@ -1,4 +1,4 @@
-import createShipment from '../src/server/createShipment/index'
+import { createShipment } from '../src/node'
 
 import chalk from 'chalk'
 

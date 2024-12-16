@@ -1,0 +1,6 @@
+{
+  "path": "@frontboi/cz-frontboi",
+  "skipQuestions": [
+    "body"
+  ]
+}

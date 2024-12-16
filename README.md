@@ -117,6 +117,20 @@ getLabels().then(labels => console.log(labels))
 getTracking().then(trackingInfos => console.log(trackingInfos.Relais_Libelle))
 ```
 
+### Generate XML
+
+The package exports a little utilitary to transform an object to a XML string, This function is used to generate the XML to be sent to Mondial Relay's API.
+
+```ts
+import { generateXML } from '@frontboi/mondial-relay'
+
+const data = {
+  // your object
+}
+
+const xml = generateXML(data)
+```
+
 ## Client and server
 
 Functions made available both for client and server environment.

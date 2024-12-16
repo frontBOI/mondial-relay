@@ -1,8 +1,8 @@
 import { CreateShipmentResponse, ShipContext, Shipment, ShipOutputOptions } from '../../types/ship'
+import { generateXML } from '../lib'
 import { ShipContextSchema, ShipmentSchema, ShipOutputOptionsSchema } from './schemas'
 
 import axios from 'axios'
-import { Builder } from 'xml2js'
 
 interface ShipParams {
   shipment: Shipment
@@ -116,8 +116,7 @@ export default async function createShipment({
     },
   }
 
-  const builder = new Builder()
-  const xml = builder.buildObject(data)
+  const xml = generateXML(data)
 
   const API_URL = 'https://connect-api.mondialrelay.com/api/shipment'
   const response = await axios.post(API_URL, xml, {
