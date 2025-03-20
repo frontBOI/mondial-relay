@@ -96,6 +96,18 @@ const { rawResponse, isSandbox, sendingNumber, etiquetteLink } = data
 
 To try this function, fill the `Login` and `Password` fields in `/examples/createShipment.ts` with your own keys, then run `npm run demo:create_shipment` to test for your environment.
 
+#### Known bugs
+
+In case you encounter the error `An error happened: "Service_Expedition_EchecRecuperationTarif".`, the fix might be to change the `CollectionMode`from `CCC` to `REL`:
+
+```js
+CollectionMode: {
+  Mode: 'REL'
+}
+```
+
+Errors coming from MondialRelay API are often cryptic and hard to understand 🤷🏼‍♂️
+
 ### API v1 👴🏼
 
 These are all the functions made available by the Mondial Relay's API v1, using SOAP.
@@ -122,7 +134,7 @@ getTracking().then(trackingInfos => console.log(trackingInfos.Relais_Libelle))
 The package exports a little utilitary to transform an object to a XML string, This function is used to generate the XML to be sent to Mondial Relay's API.
 
 ```ts
-import { generateXML } from '@frontboi/mondial-relay'
+import { generateXML } from '@frontboi/mondial-relay/node'
 
 const data = {
   // your object
@@ -164,4 +176,4 @@ If you prefer, you can contact me on my Linkedin or directly by email (contact@t
 
 API v1 integration was heavily influenced by [this code](https://github.com/nooqta/mondial-relay-api). Thank you for your work.
 
-_Tom Blanchet - 2024_
+_Tom Blanchet - 2025_

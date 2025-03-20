@@ -45,7 +45,10 @@ export interface Shipment {
     }
   }
 
-  // où le colis est récupéré
+  /**
+   * Où le colis est récupéré
+   * @src https://www.mondialrelay.fr/media/123861/web-service-dual-carrier-v-27.pdf
+   */
   CollectionMode: {
     Mode: 'CCC' | 'REL'
   }
